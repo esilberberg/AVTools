@@ -1,4 +1,4 @@
-# Run from inside a directory to convert all .mkv files to .gif and organizes outputs
+# Run from inside a directory to convert all .mkv, .mp4, or .avi files to .gif and organizes outputs
 function Get-MediaType 
 {
       Write-Host '~*~ BatchGifer ~*~' -ForegroundColor red -BackgroundColor white
