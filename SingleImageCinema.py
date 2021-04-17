@@ -1,5 +1,5 @@
 # Run in target directory.
-# Creates videos with available mp3's and selected image
+# Creates videos with available mp3's and a selected image.
 
 import glob
 import os
@@ -23,3 +23,11 @@ for track in tracks:
 videos = glob.glob('*.mp4')
 for video in videos:
     shutil.move(video, output_folder)
+
+new_videos = os.listdir('Single_Image_Cinema')
+videos_count = len(new_videos)
+
+print(
+    f'Single Image Cinema created {videos_count} videos.')
+
+input("Press enter to exit")
