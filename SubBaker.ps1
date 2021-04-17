@@ -1,5 +1,6 @@
 # Bakes subtitles on output video with option to trim video
 
+Write-Host '~*~ SubBaker ~*~' -ForegroundColor red -BackgroundColor white
 $video = Read-Host -Prompt "Enter the video file"
 $subtitlePath = Read-Host -Prompt "Enter the subtitle file"
 $start = Read-Host -Prompt "Enter the start time (optional)"
