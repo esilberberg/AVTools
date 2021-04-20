@@ -1,9 +1,9 @@
-# Run in target directory.
-# Creates videos with available mp3's and a selected image.
+# Run in target directory. Batch combine each mp3's with the selected image to create a video.
 
 import glob
 import os
 import shutil
+import subprocess
 
 print('~*~ Single Image Cinema ~*~')
 image = input('Drag and drop the image: ')
@@ -16,15 +16,18 @@ if not os.path.exists('Single_Image_Cinema'):
 output_folder = 'Single_Image_Cinema'
 
 for track in tracks:
-    output_name = os.path.splitext(track)[0]
-    os.system(
-        f"ffmpeg -loop 1 -y -i {image} -i {track} -shortest -acodec copy -vcodec mjpeg {output_name}.mp4")
+    input_name = f' "{track}" '
+    output_name = input_name[:-6]
+    subprocess.run(
+        f"ffmpeg -loop 1 -y -i {image} -i {input_name} -shortest -acodec copy -vcodec mjpeg {output_name}.mp4")
 
 videos = glob.glob('*.mp4')
+
 for video in videos:
     shutil.move(video, output_folder)
 
 new_videos = os.listdir('Single_Image_Cinema')
+
 videos_count = len(new_videos)
 
 print(
