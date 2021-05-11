@@ -1,4 +1,4 @@
-# Prepares BCC student newspaper The Communicator metadata for upload to Internet Archive
+# Prepares BCC student newspaper collection "The Communicator" metadata for upload to Internet Archive
 
 import glob
 import os
@@ -62,12 +62,13 @@ for pdf in glob.glob("*.pdf"):
     upload_dict = {
         "identifier": Get_Identifier(pdf),
         "file": pdf,
-        "description": "The student newspaper of Bronx Community College from 1955 to 2012.",
+        "description": "The student newspaper of Bronx Community College. Issues from this collection date from 1959 to 2012 and were published in the Bronx, New York.",
         "subject[0]": "Student activism",
         "subject[1]": "Newspaper",
         "subject[2]": "Bronx",
         "title": pdf_basename,
         "creator": "Bronx Community College",
+        "coverage": "Bronx, New York",
         "mediatype": "texts",
         "date": Get_Identifier(pdf)[13:17],
         "language": "eng",
@@ -80,7 +81,7 @@ f = open("IAUploadManifest.csv", "w", newline='')
 writer = csv.DictWriter(
     f, fieldnames=["identifier", "file", "description",
                    "subject[0]", "subject[1]", "subject[2]",
-                   "title", "creator", "mediatype", "date",
+                   "title", "creator", "coverage", "mediatype", "date",
                    "language", "betterpdf", "licenseurl"]
 )
 writer.writeheader()
